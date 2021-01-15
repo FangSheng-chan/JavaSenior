@@ -3,12 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaSenior.iml" filepath="$PROJECT_DIR$/JavaSenior.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ioAndfile/ioAndfile.iml" filepath="$PROJECT_DIR$/ioAndfile/ioAndfile.iml" />
       <module fileurl="file://$PROJECT_DIR$/t1/t1.iml" filepath="$PROJECT_DIR$/t1/t1.iml" />
       <module fileurl="file://$PROJECT_DIR$/t2/t2.iml" filepath="$PROJECT_DIR$/t2/t2.iml" />
       <module fileurl="file://$PROJECT_DIR$/t3/t3.iml" filepath="$PROJECT_DIR$/t3/t3.iml" />
       <module fileurl="file://$PROJECT_DIR$/t4/t4.iml" filepath="$PROJECT_DIR$/t4/t4.iml" />
       <module fileurl="file://$PROJECT_DIR$/t5/t5.iml" filepath="$PROJECT_DIR$/t5/t5.iml" />
       <module fileurl="file://$PROJECT_DIR$/t6/t6.iml" filepath="$PROJECT_DIR$/t6/t6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/t7/t7.iml" filepath="$PROJECT_DIR$/t7/t7.iml" />
     </modules>
   </component>
 </project>

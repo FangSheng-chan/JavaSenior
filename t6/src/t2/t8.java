@@ -1,6 +1,7 @@
 package t2;
 
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class t8 {
     public static void main(String[] args) {
@@ -9,6 +10,9 @@ public class t8 {
         hashMap.put("a","b");
         hashMap.put("c","b");
         hashMap.put("b","b");
+
+        ArrayList<Integer> integers = new ArrayList<>();
+//        integers.remove()
 
         Iterator<Map.Entry<String, String>> iterator = hashMap.entrySet().iterator();
 
