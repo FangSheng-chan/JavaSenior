@@ -58,11 +58,10 @@ public class BinaryTree {
      * @return
      */
     TreeNode invertTree(TreeNode root) {
-        // base case
         if (root == null) {
             return null;
         }
-        /**** 前序遍历位置 ****/
+        // 前序遍历
         // root 节点需要交换它的左右子节点
         TreeNode tmp = root.left;
         root.left = root.right;

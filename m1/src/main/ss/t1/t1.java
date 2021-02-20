@@ -29,7 +29,6 @@ public class t1 {
         list.add(new AlarmTableConditionModel("ss", "0"));
         list.add(new AlarmTableConditionModel("dd", "0"));
         list.add(new AlarmTableConditionModel(null, "0"));
-
         System.out.println(list);
 //        for (AlarmTableConditionModel alarmTableConditionModel : list) {
 //            String name = alarmTableConditionModel.getName();
@@ -38,5 +37,9 @@ public class t1 {
 //            }
 //            System.out.println(alarmTableConditionModel);
 //        }
+    }
+    
+    @Test
+    public void test02(){
     }
 }

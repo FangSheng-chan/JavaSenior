@@ -59,7 +59,8 @@ public class TreeNode {
      * 编写先序遍历的方法
      */
     public void preOrder() {
-        System.out.println(this);
+        TreeNode treeNode = this;
+        System.out.println(treeNode);
         //递归向左子树前序遍历
         if (this.left != null) {
             this.left.preOrder();
