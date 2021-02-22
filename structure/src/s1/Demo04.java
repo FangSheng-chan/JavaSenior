@@ -1,4 +1,4 @@
-package struct01;
+package s1;
 
 import java.util.Arrays;
 

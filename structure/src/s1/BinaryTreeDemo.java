@@ -1,4 +1,4 @@
-package struct01;
+package s1;
 
 /**
  * @author fangsheng

@@ -1,6 +1,4 @@
-package struct01;
-
-import java.net.SocketAddress;
+package s1;
 
 /**
  * @author fangsheng

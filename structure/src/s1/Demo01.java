@@ -1,4 +1,4 @@
-package struct01;
+package s1;
 
 /**
  * @author fangsheng
@@ -66,7 +66,7 @@ public class Demo01 {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("ss");
     }
 
 
