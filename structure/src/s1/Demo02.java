@@ -8,12 +8,12 @@ package s1;
  */
 public class Demo02 {
 
-    private ListNode head;
+    private ListNode head = new ListNode();
 
     private ListNode left;
 
     public Demo02() {
-        head = new ListNode();
+
     }
 
     @Override
@@ -106,6 +106,12 @@ public class Demo02 {
         return len;
     }
 
+    /**
+     * 反转整个链表
+     *
+     * @param head
+     * @return
+     */
     ListNode reverse(ListNode head) {
         if (head.next == null) {
             return head;
@@ -158,15 +164,20 @@ public class Demo02 {
      * @return
      */
     ListNode reverseBetween(ListNode head, int m, int n) {
+        // base case
         if (m == 1) {
-            // 相当于反转前n个元素
-            reverseN(head, n);
+            return reverseN(head, n);
         }
+        // 前进到反转的起点触发 base case
         head.next = reverseBetween(head.next, m - 1, n - 1);
         return head;
     }
 
-
+    /**
+     * 反转整个链表
+     * @param head
+     * @return
+     */
     ListNode reverseIteration(ListNode head) {
         ListNode pre, cur, next;
         pre = null;
@@ -229,17 +240,12 @@ public class Demo02 {
         link.insertHeadNode(1);
         link.insertTailNode(2);
         link.insertTailNode(3);
-        link.insertTailNode(3);
-        link.insertTailNode(1);
-        link.insertTailNode(0);
+        link.insertTailNode(4);
+        link.insertTailNode(5);
+        link.insertTailNode(6);
         System.out.println(link);
-
-        System.out.println(link.isPalindromic(link.head));
-
-        int i = 0;
-
-//        ListNode reverse = link.reverse(link.head);
-//        System.out.println(reverse);
+        ListNode reverse = link.reverseBetween(link.head, 1, 5);
+        System.out.println(reverse);
 //        ListNode reverseN = link.reverseN(link.head, 3);
 //        System.out.println(reverseN);
 //        ListNode listNode = link.reverseIteration(link.head.next);
