@@ -175,6 +175,8 @@ public class Demo02 {
 
     /**
      * 反转整个链表
+     * 反转以 head 为头结点的链表
+     *
      * @param head
      * @return
      */
@@ -192,6 +194,13 @@ public class Demo02 {
         return pre;
     }
 
+    /**
+     * 反转一段区间内的链表
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     ListNode reverseIterationAB(ListNode a, ListNode b) {
         ListNode pre, cur, next;
         pre = null;
@@ -204,6 +213,29 @@ public class Demo02 {
             cur = next;
         }
         return pre;
+    }
+
+    /**
+     * K 个一组反转链表
+     * @param head
+     * @param k
+     * @return
+     */
+    ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        ListNode a, b;
+        a = b = head;
+        for (int i = 0; i < k; i++) {
+            if (b == null) {
+                return head;
+            }
+            b = b.next;
+        }
+        ListNode newHead = reverseIterationAB(a, b);
+        a.next = reverseKGroup(b, k);
+        return newHead;
     }
 
     /**
@@ -244,8 +276,10 @@ public class Demo02 {
         link.insertTailNode(5);
         link.insertTailNode(6);
         System.out.println(link);
-        ListNode reverse = link.reverseBetween(link.head, 1, 5);
-        System.out.println(reverse);
+        ListNode listNode = link.reverseKGroup(link.head, 3);
+        System.out.println(listNode);
+//        ListNode reverse = link.reverseBetween(link.head, 1, 5);
+//        System.out.println(reverse);
 //        ListNode reverseN = link.reverseN(link.head, 3);
 //        System.out.println(reverseN);
 //        ListNode listNode = link.reverseIteration(link.head.next);

@@ -6,11 +6,16 @@ package s1;
  */
 public class TreeNode {
     int no;
-    String val;
+    Integer val;
     TreeNode left;
     TreeNode right;
+    TreeNode next;
 
-    public TreeNode(int no, String val) {
+    public TreeNode(Integer val) {
+        this.val = val;
+    }
+
+    public TreeNode(int no, Integer val) {
         this.no = no;
         this.val = val;
     }
@@ -23,11 +28,11 @@ public class TreeNode {
         this.no = no;
     }
 
-    public String getVal() {
+    public Integer getVal() {
         return val;
     }
 
-    public void setVal(String val) {
+    public void setVal(Integer val) {
         this.val = val;
     }
 
@@ -47,11 +52,22 @@ public class TreeNode {
         this.right = right;
     }
 
+    public TreeNode getNext() {
+        return next;
+    }
+
+    public void setNext(TreeNode next) {
+        this.next = next;
+    }
+
     @Override
     public String toString() {
         return "TreeNode{" +
                 "no=" + no +
                 ", val='" + val + '\'' +
+                ", left=" + left +
+                ", right=" + right +
+                ", next=" + next +
                 '}';
     }
 
