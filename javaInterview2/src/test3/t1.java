@@ -23,7 +23,7 @@ public class t1 {
         boolean exists = file.exists();
         System.out.println(exists);
 
-        new ArrayList<>()
+
 
     }
 

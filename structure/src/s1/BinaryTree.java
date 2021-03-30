@@ -1,9 +1,8 @@
 package s1;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import apple.laf.JRSUIUtils;
+
+import java.util.*;
 
 /**
  * @author fangsheng
@@ -372,6 +371,7 @@ public class BinaryTree {
     }
 
     int sum = 0;
+
     void traverse7(TreeNode root) {
         if (root == null) {
             return;
@@ -401,13 +401,223 @@ public class BinaryTree {
      *
      * @param root
      */
+
+    int num;
+
+    int getVal(TreeNode root) {
+        traverse6(root);
+        return num;
+    }
+
     void traverse6(TreeNode root) {
         if (root == null) {
             return;
         }
-        traverse(root.right);
-        System.out.println(root.val);
-        traverse(root.left);
+        num++;
+        traverse6(root.left);
+        traverse6(root.right);
     }
 
+    /**
+     * 普通二叉树
+     * 时间复杂度 O(N)
+     *
+     * @param root
+     * @return
+     */
+    public int countNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+
+    /**
+     * 满二叉树
+     *
+     * @param root
+     * @return
+     */
+    public int countMNodes(TreeNode root) {
+        int h = 0;
+        while (root != null) {
+            root = root.left;
+            h++;
+        }
+        return (int) (Math.pow(2, h) - 1);
+    }
+
+    public int countWQNodes(TreeNode root) {
+        TreeNode l = root, r = root;
+        // 记录左、右子树的高度
+        int hl = 0, hr = 0;
+        while (l != null) {
+            l = l.left;
+            hl++;
+        }
+        while (r != null) {
+            r = r.right;
+            hr++;
+        }
+        // 如果左右子树的高度相同，则是满二叉树  节点总数 2^h -1
+        if (hl == hr) {
+            return (int) (Math.pow(hl, 2) - 1);
+        }
+        // 高度不相同，普通二叉树
+        return 1 + countWQNodes(root.left) + countWQNodes(root.right);
+    }
+
+//    boolean isValidBST(TreeNode root) {
+//        if (root == null) {
+//            return true;
+//        }
+//        if (root.left != null && root.left.val > root.val) {
+//            return false;
+//        }
+//        if (root.right != null && root.right.val < root.val) {
+//            return false;
+//        }
+//        return isValidBST(root.left) && isValidBST(root.right);
+//    }
+
+    boolean isValidBST(TreeNode root) {
+        return isValidBST(root, null, null);
+    }
+
+    boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
+        if (root == null) {
+            return true;
+        }
+        if (min != null && root.val <= min.val) {
+            return false;
+        }
+        if (max != null && root.val >= max.val) {
+            return false;
+        }
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+    }
+
+    /**
+     * BST 搜索一个数
+     * <p>
+     * 适用于所有普通二叉树
+     *
+     * @param root
+     * @param target
+     * @return
+     */
+    boolean isInBST(TreeNode root, int target) {
+        if (root == null) {
+            return false;
+        }
+        if (root.val == target) {
+            return true;
+        }
+        //当前节点没找到就递归地去
+        return isInBST(root.left, target) || isInBST(root.right, target);
+    }
+
+    /***
+     * 利用BST 左小右大 的特性
+     * @param root
+     * @param target
+     * @return
+     */
+    boolean isInBST2(TreeNode root, int target) {
+        if (root == null) {
+            return false;
+        }
+        if (root.val == target) {
+            return true;
+        }
+        if (root.val < target) {
+            return isInBST2(root.right, target);
+        }
+        if (root.val > target) {
+            return isInBST2(root.left, target);
+        }
+        return false;
+    }
+
+    /**
+     * 在 BST 插入一个数
+     *
+     * @param root
+     * @param val
+     * @return
+     */
+    TreeNode insertIntoBST(TreeNode root, int val) {
+        // 找到空位置插入新结点
+        if (root == null) {
+            return new TreeNode(val);
+        }
+        if (root.val < val) {
+            root.right = insertIntoBST(root.right, val);
+        }
+        if (root.val > val) {
+            root.left = insertIntoBST(root.left, val);
+        }
+        return root;
+    }
+
+    int countNodes2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + countNodes2(root.left) + countNodes2(root.right);
+    }
+
+    public String serialize2(TreeNode root) {
+        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder ser = ser(root, stringBuilder);
+        return ser.toString();
+    }
+
+    StringBuilder ser(TreeNode root, StringBuilder stringBuilder) {
+        if (root == null) {
+            return stringBuilder.append("#").append(",");
+        }
+        stringBuilder.append(root.val).append(",");
+        ser(root.left, stringBuilder);
+        ser(root.right, stringBuilder);
+        return stringBuilder;
+    }
+
+    public List<String> serialize3(TreeNode root) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        ser2(root, linkedList);
+        return linkedList;
+    }
+
+    void ser2(TreeNode root, LinkedList<String> linkedList) {
+        if (root == null) {
+            linkedList.addLast("#");
+            return;
+        }
+        linkedList.addLast(String.valueOf(root.val));
+        ser2(root.left, linkedList);
+        ser2(root.right, linkedList);
+    }
+
+    public TreeNode deserialize2(String data) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        for (String s : data.split(",")) {
+            linkedList.addLast(s);
+        }
+        return desr(linkedList);
+    }
+
+    TreeNode desr(LinkedList<String> nodes) {
+        if (nodes.isEmpty()) {
+            return null;
+        }
+        String first = nodes.removeFirst();
+        if (first.equals("#")) {
+            return null;
+        }
+        TreeNode root = new TreeNode(Integer.parseInt(first));
+        root.left = desr(nodes);
+        root.right = desr(nodes);
+        return root;
+    }
 }

@@ -2,6 +2,7 @@ package s1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,8 +29,28 @@ public class BinaryTreeDemo {
 //        node4.setLeft(node6);
 //        node4.setRight(node7);
 
-        TreeNode treeNode = binaryTree.convertBST(node3);
-        System.out.println(treeNode);
+
+        List<String> stringList = binaryTree.serialize3(node3);
+        System.out.println(stringList);
+
+
+        String s = binaryTree.serialize2(node3);
+        System.out.println(s);
+
+//        String s = "1,2,#,4,#,#,3,#,#,";
+//        TreeNode treeNode = binaryTree.deserialize2(s);
+//        System.out.println(treeNode);
+
+//        String val = binaryTree.serialize2(node3);
+//        System.out.println(val);
+
+//        int inBST2 = binaryTree.getVal(node3, 2);
+//        System.out.println(inBST2);
+//        boolean validBST = binaryTree.isValidBST(node3);
+//        System.out.println(validBST);
+
+//        TreeNode treeNode = binaryTree.convertBST(node3);
+//        System.out.println(treeNode);
 
 //        TreeNode deserialize = binaryTree.deserialize("1,2,#,4,#,#,3,#,#,");
 //        System.out.println(deserialize);

@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="m1" />
+        <module name="redis-jedis" />
         <module name="t8" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="m1" target="1.8" />
+      <module name="redis-jedis" target="1.8" />
       <module name="t8" target="1.8" />
     </bytecodeTargetLevel>
   </component>
