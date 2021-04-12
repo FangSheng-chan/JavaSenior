@@ -7,19 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-boot-redis" />
         <module name="m1" />
         <module name="redis-jedis" />
         <module name="t8" />
+        <module name="zookeeperApI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="m1" target="1.8" />
       <module name="redis-jedis" target="1.8" />
+      <module name="spring-boot-redis" target="1.8" />
       <module name="t8" target="1.8" />
+      <module name="zookeeperApI" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-boot-redis" options="-parameters" />
       <module name="t8" options="-parameters" />
     </option>
   </component>

@@ -6,10 +6,11 @@
       <module fileurl="file://$PROJECT_DIR$/JavaSenior.iml" filepath="$PROJECT_DIR$/JavaSenior.iml" />
       <module fileurl="file://$PROJECT_DIR$/ioAndfile/ioAndfile.iml" filepath="$PROJECT_DIR$/ioAndfile/ioAndfile.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaDemo/javaDemo.iml" filepath="$PROJECT_DIR$/javaDemo/javaDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaInterview/javaInterview.iml" filepath="$PROJECT_DIR$/javaInterview/javaInterview.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaInterview2/javaInterview2.iml" filepath="$PROJECT_DIR$/javaInterview2/javaInterview2.iml" />
       <module fileurl="file://$PROJECT_DIR$/m1/m1.iml" filepath="$PROJECT_DIR$/m1/m1.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-jedis/redis-jedis.iml" filepath="$PROJECT_DIR$/redis-jedis/redis-jedis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/s2/s2.iml" filepath="$PROJECT_DIR$/s2/s2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" filepath="$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/structure/structure.iml" filepath="$PROJECT_DIR$/structure/structure.iml" />
       <module fileurl="file://$PROJECT_DIR$/t1/t1.iml" filepath="$PROJECT_DIR$/t1/t1.iml" />
       <module fileurl="file://$PROJECT_DIR$/t2/t2.iml" filepath="$PROJECT_DIR$/t2/t2.iml" />
@@ -19,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/t6/t6.iml" filepath="$PROJECT_DIR$/t6/t6.iml" />
       <module fileurl="file://$PROJECT_DIR$/t7/t7.iml" filepath="$PROJECT_DIR$/t7/t7.iml" />
       <module fileurl="file://$PROJECT_DIR$/t8/t8.iml" filepath="$PROJECT_DIR$/t8/t8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeperApI/zookeeperApI.iml" filepath="$PROJECT_DIR$/zookeeperApI/zookeeperApI.iml" />
     </modules>
   </component>
 </project>
