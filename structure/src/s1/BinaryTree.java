@@ -625,7 +625,7 @@ public class BinaryTree {
         if (root == null) {
             return 0;
         }
-        Queue<TreeNode> q = new LinkedList<>();
+        Deque<TreeNode> q = new LinkedList<>();
         q.offer(root);
         int depth = 1;
         while (!q.isEmpty()) {

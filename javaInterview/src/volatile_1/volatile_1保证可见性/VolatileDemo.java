@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * 假设是主物理内存
  */
 class MyData {
-    int number = 0;
+     int number = 0;
 
     public void addTo60() {
         this.number = 60;

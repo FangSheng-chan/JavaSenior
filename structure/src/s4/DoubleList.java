@@ -11,10 +11,10 @@ public class DoubleList {
         myLinkedList.addNode(2);
         myLinkedList.addNode(2);
         myLinkedList.addNode(3);
-//        myLinkedList.addNode(3);
-//        myLinkedList.addNode(5);
-//        myLinkedList.addNode(5);
-//        myLinkedList.addNode(6);
+        myLinkedList.addNode(3);
+        myLinkedList.addNode(5);
+        myLinkedList.addNode(5);
+        myLinkedList.addNode(6);
 
         ListNode listNode = myLinkedList.deleteDuplicates(myLinkedList.head);
         System.out.println(listNode);

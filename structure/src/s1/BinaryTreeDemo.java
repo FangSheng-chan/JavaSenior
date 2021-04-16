@@ -14,7 +14,7 @@ public class BinaryTreeDemo {
 
         BinaryTree binaryTree = new BinaryTree();
 
-        TreeNode root = new TreeNode(1, 1);
+        TreeNode node1 = new TreeNode(1, 1);
         TreeNode node2 = new TreeNode(2, 2);
         TreeNode node3 = new TreeNode(3, 3);
         TreeNode node4 = new TreeNode(4, 4);
@@ -25,17 +25,22 @@ public class BinaryTreeDemo {
         binaryTree.setRoot(node3);
         node3.setLeft(node2);
         node3.setRight(node4);
-        node2.setLeft(root);
-//        node4.setLeft(node6);
-//        node4.setRight(node7);
+        node2.setLeft(node1);
+        node4.setLeft(node6);
+        node4.setRight(node7);
+        node1.setLeft(node5);
 
 
-        List<String> stringList = binaryTree.serialize3(node3);
-        System.out.println(stringList);
+        int depth = binaryTree.minDepth(node3);
+        System.out.println(depth);
 
-
-        String s = binaryTree.serialize2(node3);
-        System.out.println(s);
+//
+//        List<String> stringList = binaryTree.serialize3(node3);
+//        System.out.println(stringList);
+//
+//
+//        String s = binaryTree.serialize2(node3);
+//        System.out.println(s);
 
 //        String s = "1,2,#,4,#,#,3,#,#,";
 //        TreeNode treeNode = binaryTree.deserialize2(s);
