@@ -291,7 +291,7 @@ public class T1 {
 
     @Test
     public void t14() {
-        int i = removeDuplicates(new int[]{1, 3, 3, 3, 4, 5, 5, 6});
+        int i = removeDuplicates(new int[]{1, 3, 3, 3, 4, 5, 5, 6, 6, 7, 7, 8});
         System.out.println(i);
     }
 
@@ -324,8 +324,24 @@ public class T1 {
 
     @Test
     public void test15() {
-        int i = removeElement(new int[]{1, 3, 3, 3, 4, 5, 5, 6},3);
+        int i = removeElement(new int[]{1,1,3, 3, 3, 4, 5, 5, 6}, 1);
         System.out.println(i);
+    }
+
+    void moveZero(int[] nums) {
+        int p = removeElement(nums, 0);
+        for (; p < nums.length; p++) {
+            nums[p] = 0;
+        }
+    }
+
+    @Test
+    public void test16() {
+        int[] a = new int[]{1, 3, 0, 0, 0, 4, 5, 5, 6};
+        moveZero(a);
+        for (int i : a) {
+            System.out.println(i);
+        }
     }
 }
 
