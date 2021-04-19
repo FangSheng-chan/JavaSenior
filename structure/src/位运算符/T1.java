@@ -310,34 +310,22 @@ public class T1 {
         return slow + 1;
     }
 
-    int removeDuplicates2(int[] nums) {
-        int slow = 0, fast = 0;
+    int removeElement(int[] nums, int val) {
+        int fast = 0, slow = 0;
         while (fast < nums.length) {
-            if (nums[slow] != nums[fast]) {
-                slow++;
+            if (nums[fast] != val) {
                 nums[slow] = nums[fast];
+                slow++;
             }
             fast++;
         }
-        return slow + 1;
-    }
-
-    ListNode deleteDuplicates(ListNode head) {
-        ListNode fast = head, slow = head;
-        while (fast != null) {
-            if (fast.val != slow.val) {
-                slow = slow.next;
-                slow.val = fast.val;
-            }
-            fast = fast.next;
-        }
-        slow.next = null;
-        return head;
+        return slow;
     }
 
     @Test
-    public void test15(){
-
+    public void test15() {
+        int i = removeElement(new int[]{1, 3, 3, 3, 4, 5, 5, 6},3);
+        System.out.println(i);
     }
 }
 
