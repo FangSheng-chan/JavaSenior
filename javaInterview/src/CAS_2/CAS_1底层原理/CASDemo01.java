@@ -1,6 +1,7 @@
 package CAS_2.CAS_1底层原理;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -19,9 +20,10 @@ public class CASDemo01 {
 
         System.out.println(atomicInteger.get());
 
-        int[] n = {1, 2, 3, 4};
-        int b[][] = {{1, 2, 3, 4}, {1, 2, 3, 4}};
-        String string = Arrays.deepToString(b);
-        System.out.println(string);
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        hashMap.put(1,1);
+        hashMap.put(1,2);
+        System.out.println(hashMap);
+
     }
 }

@@ -29,8 +29,9 @@ public class Test2 {
         age.set(p, 10);
         System.out.println(p.toString());
         // 调用方法
-        Method showMethod = personClass.getMethod("show");
-        showMethod.invoke(p);
+        Student student = new Student("ss",22);
+        Method showMethod = personClass.getMethod("showCoolBoy", String.class, int.class);
+        showMethod.invoke(student);
     }
 
     @Test

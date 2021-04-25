@@ -8,6 +8,7 @@ public class Student extends Creature<String> implements Comparable<String>, MyI
     private String name;
     public Integer age;
 
+
     public String getName() {
         return name;
     }
@@ -44,12 +45,20 @@ public class Student extends Creature<String> implements Comparable<String>, MyI
     public Student() {
     }
 
+    private void show(String name, int age) {
+        System.out.println("你好，我是😊" + name + age);
+    }
+
     public void show() {
         System.out.println("你好，我是😊");
     }
 
-    private String showCoolBoy(String name,int age) {
-        System.out.println(name + "\t他真是一个cool boy,他的年龄是："+age);
+    public void method(String ... strings){
+
+    }
+
+    public String showCoolBoy(String name, int age) {
+        System.out.println(name + "\t他真是一个cool boy,他的年龄是：" + age);
         return name;
     }
 
