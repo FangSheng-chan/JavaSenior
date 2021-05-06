@@ -13,13 +13,20 @@ public class T2 {
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3, 5, 6};
-        int[] b = {1, 1, 1, 5, 6};
+        int[] b = {-1, 0, 3, 5, 9, 12};
         int[] c = {72, 6, 57, 88, 60, 42, 83, 73, 48, 85};
 //        System.out.println(subarraySum(b, 3));
 //        sort(c);
-
         quick_sort(c, 0, c.length - 1);
         System.out.println(Arrays.toString(c));
+        int result = binarySearch(b, 3);
+        int result2 = recursionBinarySearch(b, 12, 0, b.length - 1);
+        System.out.println(result);
+        System.out.println(result2);
+        sort2(c);
+        System.out.println(Arrays.toString(c));
+
+
     }
 
     public static int subarraySum(int[] nums, int k) {
@@ -148,7 +155,7 @@ public class T2 {
         nums[j] = temp;
     }
 
-    static void quick_sort(int s[], int l, int r) {
+    static void quick_sort(int[] s, int l, int r) {
         if (l < r) {
             int i = l, j = r, x = s[l];
             while (i < j) {
@@ -174,6 +181,68 @@ public class T2 {
             quick_sort(s, l, i - 1);
             quick_sort(s, i + 1, r);
         }
+    }
+
+    static void sort2(int[] nums) {
+        quickSort(nums, 0, nums.length - 1);
+    }
+
+    static void quickSort(int[] num, int l, int r) {
+        if (l <= r) {
+            int i = l, j = r, x = num[l];
+            while (i < j && num[j] >= x) {
+                j--;
+            }
+            if (i < j) {
+                num[i] = num[j];
+                i++;
+            }
+            while (i < j && num[i] < x) {
+                i++;
+            }
+            if (i < j) {
+                num[j] = num[i];
+                j--;
+            }
+            num[i] = x;
+            quick_sort(num, l, i - 1);
+            quick_sort(num, i + 1, r);
+        }
+    }
+
+    public static int search(int[] nums, int target) {
+        return recursionBinarySearch(nums,target,0,nums.length-1);
+    }
+
+    static int recursionBinarySearch(int[] arr, int key, int l, int r) {
+        if (key < arr[l] || key > arr[r] || l > r) {
+            return -1;
+        }
+        int mid = l + (r - l) / 2;
+        if (arr[mid] > key) {
+            return recursionBinarySearch(arr, key, l, mid - 1);
+        } else if (arr[mid] < key) {
+            return recursionBinarySearch(arr, key, mid + 1, r);
+        } else {
+            return mid;
+        }
+    }
+
+    static int binarySearch(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else if (nums[mid] > target) {
+                r = mid - 1;
+            }
+        }
+        return -1;
     }
 }
 
