@@ -19,6 +19,7 @@ class MyThread implements Callable<Integer> {
         return 1024;
     }
 }
+
 /**
  * @author ss
  */
@@ -26,26 +27,20 @@ public class CallableDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // FutureTask：实现了Runnable接口，构造函数又需要传入 Callable接口
         FutureTask<Integer> futureTask = new FutureTask<>(new MyThread());
-        FutureTask<Integer> futureTask2 = new FutureTask<>(new MyThread());
         Thread thread = new Thread(futureTask, "aaa");
-        Thread thread1 = new Thread(futureTask2, "bb");
-        thread.start();
-        thread1.start();
-        System.out.println("result FutureTask " + futureTask.get());
-        System.out.println("result FutureTask " + futureTask2.get());
-        while (!futureTask.isDone()) {
-            new Thread(() -> {
-                for (int i = 0; i < 100; i++) {
-                    System.out.println(i);
-                }
-            }).start();
+        new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
+                System.out.println(i);
+            }
+        }).start();
 
-            new Thread(() -> {
-                for (int i = 0; i < 100; i++) {
-                    System.out.println(i);
-                }
-            }).start();
-        }
+        new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
+                System.out.println(i);
+            }
+        }).start();
+        thread.start();
+        System.out.println("result FutureTask " + futureTask.get());
     }
 }
 
