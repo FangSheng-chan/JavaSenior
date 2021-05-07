@@ -2,10 +2,7 @@ package 阻塞队列_8;
 
 import org.junit.Test;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * 当阻塞队列是空时，从队列中获取元素的操作将会被阻塞
@@ -24,7 +21,57 @@ import java.util.concurrent.TimeUnit;
  */
 public class BlockingQueueDemo {
     public static void main(String[] args) {
+        BlockingQueue<Object> blockingQueue = new SynchronousQueue();
+        Thread thread = new Thread(() -> {
+            try {
+                System.out.println(Thread.currentThread().getName() + "\t put A ");
+                blockingQueue.put("A");
 
+                System.out.println(Thread.currentThread().getName() + "\t put B ");
+                blockingQueue.put("B");
+
+                System.out.println(Thread.currentThread().getName() + "\t put C ");
+                blockingQueue.put("C");
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "t1");
+        Thread thread2 = new Thread(() -> {
+            try {
+
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                blockingQueue.take();
+                System.out.println(Thread.currentThread().getName() + "\t take A ");
+
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                blockingQueue.take();
+                System.out.println(Thread.currentThread().getName() + "\t take B ");
+
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                blockingQueue.take();
+                System.out.println(Thread.currentThread().getName() + "\t take C ");
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "t2");
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        executorService.execute(thread);
+        executorService.execute(thread2);
+        executorService.shutdown();
     }
 
     /**
@@ -102,107 +149,5 @@ public class BlockingQueueDemo {
         System.out.println(blockingQueue.poll(2L, TimeUnit.SECONDS));
         System.out.println(blockingQueue.poll(2L, TimeUnit.SECONDS));
         System.out.println(blockingQueue.poll(2L, TimeUnit.SECONDS));
-    }
-
-    @Test
-    public void t5() {
-        BlockingQueue<Object> blockingQueue = new SynchronousQueue<>();
-
-        new Thread(() -> {
-            try {
-                System.out.println(Thread.currentThread().getName() + "\t PUT A");
-                blockingQueue.put("A");
-                System.out.println(Thread.currentThread().getName() + "\t PUT B");
-                blockingQueue.put("B");
-                System.out.println(Thread.currentThread().getName() + "\t PUT C");
-                blockingQueue.put("C");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }, "t1").start();
-
-        new Thread(() -> {
-            try {
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                blockingQueue.take();
-                System.out.println(Thread.currentThread().getName() + "\t TAKE A");
-
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                blockingQueue.take();
-                System.out.println(Thread.currentThread().getName() + "\t TAKE B");
-
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                blockingQueue.take();
-                System.out.println(Thread.currentThread().getName() + "\t TAKE C");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }, "t2").start();
-    }
-
-    @Test
-    public void t6() {
-        BlockingQueue<String> blockingQueue = new SynchronousQueue<>();
-
-        new Thread(() -> {
-            try {
-                System.out.println(Thread.currentThread().getName() + "\t put A ");
-                blockingQueue.put("A");
-
-                System.out.println(Thread.currentThread().getName() + "\t put B ");
-                blockingQueue.put("B");
-
-                System.out.println(Thread.currentThread().getName() + "\t put C ");
-                blockingQueue.put("C");
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }, "t1").start();
-
-        new Thread(() -> {
-            try {
-
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                blockingQueue.take();
-                System.out.println(Thread.currentThread().getName() + "\t take A ");
-
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                blockingQueue.take();
-                System.out.println(Thread.currentThread().getName() + "\t take B ");
-
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                blockingQueue.take();
-                System.out.println(Thread.currentThread().getName() + "\t take C ");
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }, "t2").start();
     }
 }

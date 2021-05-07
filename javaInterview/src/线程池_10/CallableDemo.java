@@ -15,6 +15,7 @@ class MyThread implements Callable<Integer> {
      */
     @Override
     public Integer call() throws Exception {
+        TimeUnit.SECONDS.sleep(3);
         System.out.println(Thread.currentThread().getName() + "come in Callable");
         return 1024;
     }

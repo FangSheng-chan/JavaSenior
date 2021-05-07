@@ -11,13 +11,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2021/4/26 3:19 下午
  */
 class MyResource {
+    /**
+     * 这里用到volatile是为了保持数据的可见性，也就是当FLAG修改时，要马上通知其他线程进行修改
+     */
     private volatile boolean FLAG = true;
     private AtomicInteger atomicInteger = new AtomicInteger();
     BlockingQueue<String> blockingQueue = null;
 
     public MyResource(BlockingQueue<String> blockingQueue) {
         this.blockingQueue = blockingQueue;
-        System.out.println(blockingQueue.getClass().getName());
     }
 
     /**
