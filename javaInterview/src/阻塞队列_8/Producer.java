@@ -14,7 +14,6 @@ public class Producer implements Runnable {
     private BlockingQueue queue;
     private static AtomicInteger count = new AtomicInteger();
     private static final int DEFAULT_RANGE_FOR_SLEEP = 1000;
-
     public Producer(BlockingQueue queue) {
         this.queue = queue;
     }

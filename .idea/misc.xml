@@ -11,6 +11,10 @@
         <option value="$PROJECT_DIR$/redis-jedis/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-redis/pom.xml" />
         <option value="$PROJECT_DIR$/zookeeperApI/pom.xml" />
+        <option value="$PROJECT_DIR$/nio/pom.xml" />
+        <option value="$PROJECT_DIR$/springWell/pom.xml" />
+        <option value="$PROJECT_DIR$/MinaWell/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootTools/pom.xml" />
       </list>
     </option>
   </component>
