@@ -13,8 +13,10 @@
       <module fileurl="file://$PROJECT_DIR$/m1/m1.iml" filepath="$PROJECT_DIR$/m1/m1.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-jedis/redis-jedis.iml" filepath="$PROJECT_DIR$/redis-jedis/redis-jedis.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" filepath="$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-tool/spring-boot-tool.iml" filepath="$PROJECT_DIR$/spring-boot-tool/spring-boot-tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-learn/spring-learn.iml" filepath="$PROJECT_DIR$/spring-learn/spring-learn.iml" />
       <module fileurl="file://$PROJECT_DIR$/springWell/springWell.iml" filepath="$PROJECT_DIR$/springWell/springWell.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springbootTools/springbootTools.iml" filepath="$PROJECT_DIR$/springbootTools/springbootTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss-Tools/ss-Tools.iml" filepath="$PROJECT_DIR$/ss-Tools/ss-Tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/structure/structure.iml" filepath="$PROJECT_DIR$/structure/structure.iml" />
       <module fileurl="file://$PROJECT_DIR$/t1/t1.iml" filepath="$PROJECT_DIR$/t1/t1.iml" />
       <module fileurl="file://$PROJECT_DIR$/t2/t2.iml" filepath="$PROJECT_DIR$/t2/t2.iml" />

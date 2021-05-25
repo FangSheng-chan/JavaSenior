@@ -27,22 +27,19 @@ public class TestBuffer {
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
-
+        System.out.println("------");
         byteBuffer.put(s.getBytes());
-
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
-
+        System.out.println("------");
         byteBuffer.flip();
-
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
-
+        System.out.println("------");
         byte[] dst = new byte[byteBuffer.limit()];
         byteBuffer.get(dst);
-
         System.out.println("--------");
         System.out.println(new String(dst, 0, dst.length));
         System.out.println(byteBuffer.position());

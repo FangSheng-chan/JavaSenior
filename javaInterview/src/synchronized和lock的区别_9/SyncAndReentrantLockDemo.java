@@ -14,8 +14,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * synchronized 和 lock 的区别
  * 1、synchronized 是属于 JVM层面的，属于 Java 关键字 ； ReentrantLock 是具体类，是api层面的锁
- * 2、synchronized 不需要用户去手动释放锁，当synchronized执行执行后，系统会自动让线程释放对锁的占有；ReentrantLock 则需要用户去手动释放锁，若没有主动释放锁，就有可能出现死锁
- * 的现象，需要lock()和unlock()配置try catch语句来完成
+ * 2、synchronized 不需要用户去手动释放锁，当synchronized执行执行后，系统会自动让线程释放对锁的占有；
+ * ---ReentrantLock 则需要用户去手动释放锁，若没有主动释放锁，就有可能出现死锁的现象，需要lock()和unlock()配置try catch语句来完成
  * 3、synchronized 不可中断，除非抛出异常或者正常运行完成；
  * ---ReentrantLock:可中断，可以设置超时方法: trylock(long timeout,TimeUnit unit)
  * 4、synchronized 非公平锁；ReentrantLock 默认是非公平锁，构造方法可以传参
@@ -59,7 +59,7 @@ class ShareResource {
             while (number != 2) {
                 condition2.await();
             }
-            System.out.println(Thread.currentThread().getName() + "\t " + number + "\t" );
+            System.out.println(Thread.currentThread().getName() + "\t " + number + "\t");
             number = 3;
             condition3.signal();
         } catch (Exception e) {
@@ -75,7 +75,7 @@ class ShareResource {
             while (number != 3) {
                 condition3.await();
             }
-            System.out.println(Thread.currentThread().getName() + "\t " + number + "\t" );
+            System.out.println(Thread.currentThread().getName() + "\t " + number + "\t");
             number = 1;
             condition1.signal();
         } catch (Exception e) {

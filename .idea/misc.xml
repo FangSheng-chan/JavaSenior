@@ -14,7 +14,8 @@
         <option value="$PROJECT_DIR$/nio/pom.xml" />
         <option value="$PROJECT_DIR$/springWell/pom.xml" />
         <option value="$PROJECT_DIR$/MinaWell/pom.xml" />
-        <option value="$PROJECT_DIR$/springbootTools/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-tool/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-learn/pom.xml" />
       </list>
     </option>
   </component>

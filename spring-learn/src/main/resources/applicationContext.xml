@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 启用@Autowired等注解 -->
+    <context:annotation-config></context:annotation-config>
+
+    <context:component-scan base-package="com.ss.mapper"></context:component-scan>
+    <context:component-scan base-package="com.ss.service"></context:component-scan>
+
+    <bean id="User" class="com.ss.model.User">
+        <property name="userName" value="fangsheng"></property>
+        <property name="age" value="22"></property>
+    </bean>
+
+
+    <bean id="user1" class="com.ss.model.User">
+        <property name="userName" value="fangsheng"></property>
+        <property name="age" value="22"></property>
+    </bean>
+
+    <bean id="user2" class="com.ss.model.User">
+        <property name="userName" value="lidd"></property>
+        <property name="age" value="21"></property>
+    </bean>
+
+    <bean id="Stu" class="com.ss.model.Stu">
+        <property name="courses">
+            <array>
+                <value>java课程</value>
+                <value>数据库课程</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="JAVA" value="java"></entry>
+                <entry key="PYTHON" value="python"></entry>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>MYSQL</value>
+                <value>Redis</value>
+            </set>
+        </property>
+        <property name="users">
+            <list>
+                <ref bean="user1"></ref>
+                <ref bean="user2"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="user" class="com.ss.model.User">
+        <constructor-arg name="userName" value="ss"></constructor-arg>
+        <constructor-arg name="age" value="22"></constructor-arg>
+    </bean>
+
+    <bean name="mybean" class="com.ss.model.MyBean"></bean>
+
+</beans>

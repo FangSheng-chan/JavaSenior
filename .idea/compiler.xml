@@ -8,12 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MinaWell" />
+        <module name="spring-boot-tool" />
         <module name="redis-jedis" />
-        <module name="springbootTools" />
         <module name="m1" />
         <module name="t8" />
         <module name="spring-boot-redis" />
         <module name="springWell" />
+        <module name="spring-learn" />
         <module name="zookeeperApI" />
       </profile>
     </annotationProcessing>
@@ -23,6 +24,8 @@
       <module name="nioLearn" target="1.8" />
       <module name="redis-jedis" target="1.8" />
       <module name="spring-boot-redis" target="1.8" />
+      <module name="spring-boot-tool" target="1.8" />
+      <module name="spring-learn" target="1.8" />
       <module name="springbootTool" target="1.8" />
       <module name="springbootTools" target="1.8" />
       <module name="SpringBootWell" target="1.8" />
@@ -35,6 +38,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SpringBootWell" options="-parameters" />
       <module name="spring-boot-redis" options="-parameters" />
+      <module name="spring-boot-tool" options="-parameters" />
       <module name="springWell" options="-parameters" />
       <module name="springbootTool" options="-parameters" />
       <module name="springbootTools" options="-parameters" />

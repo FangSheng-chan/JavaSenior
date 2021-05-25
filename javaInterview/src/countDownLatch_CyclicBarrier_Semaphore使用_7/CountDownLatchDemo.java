@@ -21,6 +21,8 @@ public class CountDownLatchDemo {
             }, String.valueOf(i)).start();
         }
 
+
+
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 try {
@@ -31,11 +33,12 @@ public class CountDownLatchDemo {
                 }
             }).start();
         }
-        try {
-            countDownLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            countDownLatch.await();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         System.out.println(Thread.currentThread().getName() + "\t ss关门");
+
     }
 }
