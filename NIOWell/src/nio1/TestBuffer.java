@@ -2,7 +2,11 @@ package nio1;
 
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 
 /**
  * 一、缓冲区(Buffer)：在Java NIO 中负责数据的存取。缓冲区就是数组。用于存储不同数据类型的数据
@@ -37,7 +41,6 @@ public class TestBuffer {
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
-        System.out.println("------");
         byte[] dst = new byte[byteBuffer.limit()];
         byteBuffer.get(dst);
         System.out.println("--------");
@@ -45,16 +48,97 @@ public class TestBuffer {
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
-        System.out.println("--------");
+        System.out.println("rewind--------");
         byteBuffer.rewind();
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
-        System.out.println("--------");
+        System.out.println("clear--------");
         byteBuffer.clear();
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
         System.out.println((char) byteBuffer.get());
     }
+
+    @Test
+    public void t2() {
+        IntBuffer buffer = IntBuffer.allocate(5);
+        for (int i = 0; i < buffer.capacity(); i++) {
+            //向buffer存放数据
+            buffer.put(i * 2);
+        }
+        //取数据
+        buffer.flip();
+        while (buffer.hasRemaining()) {
+            System.out.println(buffer.get());
+        }
+    }
+
+    @Test
+    public void t3() {
+        ByteBuffer buffer = ByteBuffer.allocate(24);
+        //int占 4byte
+        buffer.putInt(100);
+        //long占 8byte
+        buffer.putLong(20);
+        //double占 8byte
+        buffer.putDouble(30);
+        //char占 2byte
+        buffer.putChar('上');
+        //short占 2byte
+        buffer.putShort((short) 44);
+        buffer.flip();
+        System.out.println(buffer.getInt());
+        System.out.println(buffer.getLong());
+        System.out.println(buffer.getChar());
+        System.out.println(buffer.getShort());
+    }
+
+    @Test
+    public void t4() {
+        ByteBuffer buffer = ByteBuffer.allocate(2);
+        buffer.put(new byte[2]);
+    }
+
+    @Test
+    public void t5() {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(64);
+        for (int i = 0; i < 64; i++) {
+            byteBuffer.put((byte) i);
+        }
+        byteBuffer.flip();
+        ByteBuffer readOnlyBuffer = byteBuffer.asReadOnlyBuffer();
+        System.out.println(readOnlyBuffer.getClass());
+        while (readOnlyBuffer.hasRemaining()) {
+            System.out.println(readOnlyBuffer.get());
+        }
+    }
+
+    @Test
+    public void t6() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream("1.txt");
+            StringBuffer stringBuffer = new StringBuffer();
+            int result = 0;
+            while (result != -1) {
+                try {
+                    result = fileInputStream.read();
+                    char n1 = (char) result;
+                    stringBuffer.append(n1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println(stringBuffer.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void t7(){
+
+    }
+
 }

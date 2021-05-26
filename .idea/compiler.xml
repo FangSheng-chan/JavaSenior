@@ -13,6 +13,7 @@
         <module name="m1" />
         <module name="t8" />
         <module name="spring-boot-redis" />
+        <module name="nettyWell" />
         <module name="springWell" />
         <module name="spring-learn" />
         <module name="zookeeperApI" />
@@ -21,6 +22,7 @@
     <bytecodeTargetLevel>
       <module name="m1" target="1.8" />
       <module name="MinaWell" target="1.8" />
+      <module name="nettyWell" target="1.8" />
       <module name="nioLearn" target="1.8" />
       <module name="redis-jedis" target="1.8" />
       <module name="spring-boot-redis" target="1.8" />

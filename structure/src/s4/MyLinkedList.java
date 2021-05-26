@@ -22,6 +22,11 @@ public class MyLinkedList {
         tmp.next = newNode;
     }
 
+    public void addToHead(int n) {
+        ListNode node = new ListNode(n);
+        node.next = head;
+    }
+
     public void printLinkedList() {
         ListNode tmp = head;
         while (tmp != null) {
