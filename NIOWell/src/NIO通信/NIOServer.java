@@ -29,6 +29,10 @@ public class NIOServer {
                 listenerChannel.register(serverSelector, SelectionKey.OP_ACCEPT);
 
                 while (true) {
+                    if (serverSelector.select(1000) == 0) {
+                        System.out.println("服务器等待了1秒，无连接");
+                        continue;
+                    }
                     // 监测是否有新的连接，这里的1指的是阻塞的时间为 1ms
                     if (serverSelector.select(1) > 0) {
                         Set<SelectionKey> set = serverSelector.selectedKeys();
