@@ -138,7 +138,14 @@ public class TestBuffer {
 
     @Test
     public void t7(){
-
+        byte[] bytes = new byte[32];
+        ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
+        byteBuffer.put((byte) 1);
+        byteBuffer.put((byte) 2);
+        byteBuffer.flip();
+        while (byteBuffer.hasRemaining()){
+            System.out.println(byteBuffer.get());
+        }
     }
 
 }

@@ -15,18 +15,12 @@ public class T2 {
         int[] a = {1, 2, 3, 5, 6};
         int[] b = {-1, 0, 3, 5, 9, 12};
         int[] c = {72, 6, 57, 88, 60, 42, 83, 73, 48, 85};
-//        System.out.println(subarraySum(b, 3));
-//        sort(c);
-        quick_sort(c, 0, c.length - 1);
         System.out.println(Arrays.toString(c));
         int result = binarySearch(b, 3);
         int result2 = recursionBinarySearch(b, 12, 0, b.length - 1);
         System.out.println(result);
         System.out.println(result2);
-        sort2(c);
         System.out.println(Arrays.toString(c));
-
-
     }
 
     public static int subarraySum(int[] nums, int k) {
@@ -95,120 +89,7 @@ public class T2 {
         return pq.peek();
     }
 
-    static void sort(int[] nums) {
-        sort(nums, 0, nums.length - 1);
-    }
 
-    /**
-     * 快速选择算法
-     *
-     * @param nums
-     * @param lo
-     * @param hi
-     */
-    static void sort(int[] nums, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
-        int p = partition(nums, lo, hi);
-        sort(nums, lo, p - 1);
-        sort(nums, p + 1, hi);
-    }
-
-    static int partition(int[] nums, int lo, int hi) {
-        if (lo == hi) {
-            return lo;
-        }
-        //将nums[lo]作为默认分界点pivot
-        int pivot = nums[lo];
-        //j = hi +1 因为while 中会先执行
-        int i = lo, j = hi + 1;
-        while (true) {
-            //保证nums[lo..i] 都小于pivot
-            while (nums[++i] < pivot) {
-                if (i == hi) {
-                    break;
-                }
-            }
-            //保证nums[j..hi]都大于pivot
-            while (nums[--j] > pivot) {
-                if (j == lo) {
-                    break;
-                }
-            }
-            if (i >= j) {
-                break;
-            }
-            //如果走到这里，一定有：nums[i] > pivot && nums[j] < pivot
-            //所以需要交换 nums[i] 和 nums[j],保证nums[lo..j] < pivot < nums[j..hi]
-            swap(nums, i, j);
-        }
-        // 将 pivot 值交换到正确的位置
-        swap(nums, j, lo);
-        // 现在 nums[lo..j-1] < nums[j] < nums[j+1..hi]
-        return j;
-    }
-
-    static void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
-    static void quick_sort(int[] s, int l, int r) {
-        if (l < r) {
-            int i = l, j = r, x = s[l];
-            while (i < j) {
-                // 从右向左找第一个小于x的数
-                while (i < j && s[j] >= x) {
-                    j--;
-                }
-                if (i < j) {
-                    s[i] = s[j];
-                    i++;
-                }
-                // 从左向右找第一个大于等于x的数
-                while (i < j && s[i] < x) {
-                    i++;
-                }
-                if (i < j) {
-                    s[j] = s[i];
-                    j--;
-                }
-            }
-            s[i] = x;
-            // 递归调用
-            quick_sort(s, l, i - 1);
-            quick_sort(s, i + 1, r);
-        }
-    }
-
-    static void sort2(int[] nums) {
-        quickSort(nums, 0, nums.length - 1);
-    }
-
-    static void quickSort(int[] num, int l, int r) {
-        if (l <= r) {
-            int i = l, j = r, x = num[l];
-            while (i < j && num[j] >= x) {
-                j--;
-            }
-            if (i < j) {
-                num[i] = num[j];
-                i++;
-            }
-            while (i < j && num[i] < x) {
-                i++;
-            }
-            if (i < j) {
-                num[j] = num[i];
-                j--;
-            }
-            num[i] = x;
-            quick_sort(num, l, i - 1);
-            quick_sort(num, i + 1, r);
-        }
-    }
 
     public static int search(int[] nums, int target) {
         return recursionBinarySearch(nums,target,0,nums.length-1);

@@ -1,6 +1,9 @@
 package 排序.归并排序;
 
 /**
+ *
+ * 归并排序
+ *
  * @author fangsheng
  * @date 2021/5/27 9:35 上午
  */
@@ -9,7 +12,7 @@ import java.util.Arrays;
 
 public class MergeSort {
     public static void main(String[] args) {
-        int[] arr = {9, 4, 3, 2, 1, 6, 5, 3};
+        int[] arr = {8, 4, 5, 7, 1, 3, 6, 2};
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }

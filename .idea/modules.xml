@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/MinaWell/MinaWell.iml" filepath="$PROJECT_DIR$/MinaWell/MinaWell.iml" />
       <module fileurl="file://$PROJECT_DIR$/NIOWell/NIOWell.iml" filepath="$PROJECT_DIR$/NIOWell/NIOWell.iml" />
       <module fileurl="file://$PROJECT_DIR$/ioAndfile/ioAndfile.iml" filepath="$PROJECT_DIR$/ioAndfile/ioAndfile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaConcurrent/javaConcurrent.iml" filepath="$PROJECT_DIR$/javaConcurrent/javaConcurrent.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaDemo/javaDemo.iml" filepath="$PROJECT_DIR$/javaDemo/javaDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaInterview/javaInterview.iml" filepath="$PROJECT_DIR$/javaInterview/javaInterview.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaInterview2/javaInterview2.iml" filepath="$PROJECT_DIR$/javaInterview2/javaInterview2.iml" />
