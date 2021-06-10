@@ -14,8 +14,6 @@ public class Test {
 
     public static void main(String[] args) {
         int[] arr = {2, 3, 4};
-//        System.out.println(binarySearch(arr, 2));
-//        System.out.println(Arrays.toString(twoSum(arr, 6)));
         String s = "hello3";
         char[] chars = s.toCharArray();
         reverseString(chars);

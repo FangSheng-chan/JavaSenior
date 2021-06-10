@@ -18,8 +18,9 @@ import java.util.Arrays;
  */
 public class LongestPrefix {
     public static void main(String[] args) {
-        String[] strs = {"cag", "dog", "car"};
-        System.out.println("最长公共前缀：" + publicPrefix(strs));
+        String[] strs = {"cag", "cat", "car"};
+        String s = publicPrefix(strs);
+        System.out.println("最长公共前缀：" +s);
     }
 
     public static String publicPrefix(String[] strings) {
@@ -46,13 +47,10 @@ public class LongestPrefix {
     }
 
     private static boolean checkStrings(String[] strings) {
-        boolean flag = true;
         if (strings != null) {
             for (int i = 0; i < strings.length; i++) {
                 if (strings[i] != null && strings[i].length() != 0) {
-                    flag = true;
                 } else {
-                    flag = false;
                     break;
                 }
             }
