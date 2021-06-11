@@ -14,9 +14,15 @@ public class T1 {
     public static void main(String[] args) {
         HashMap<Object, Object> map = new HashMap<>();
         map.getOrDefault("1", 0);
-        System.out.println(minWindow("EBBANCF", "ABC"));
+        System.out.println(checkInclusion("EBBACCF", "ABC"));
     }
 
+    /**
+     * 最小覆盖子串
+     * @param s
+     * @param t
+     * @return
+     */
     public static String minWindow(String s, String t) {
         HashMap<Character, Integer> need = new HashMap<>();
         HashMap<Character, Integer> window = new HashMap<>();
@@ -67,6 +73,12 @@ public class T1 {
         return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 
+    /**
+     * 字符串排列
+     * @param s
+     * @param t
+     * @return
+     */
     public static boolean checkInclusion(String s, String t) {
         Map<Character, Integer> need = new HashMap<>();
         Map<Character, Integer> window = new HashMap<>();
@@ -77,7 +89,6 @@ public class T1 {
         int left = 0, right = 0;
         int valid = 0;
         // 记录最小覆盖子串的起始索引及⻓度
-        int start = 0, len = Integer.MAX_VALUE;
         while (right < s.length()) {
             // c 是将移入窗口的字符
             // 右移窗口
