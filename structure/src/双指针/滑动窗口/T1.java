@@ -12,15 +12,15 @@ import java.util.Map;
  * @date 2021/6/8 10:38 上午
  */
 public class T1 {
-
     public static void main(String[] args) {
         HashMap<Object, Object> map = new HashMap<>();
         map.getOrDefault("1", 0);
-        System.out.println(checkInclusion("EBBACCF", "ABC"));
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
     }
 
     /**
      * 最小覆盖子串
+     *
      * @param s
      * @param t
      * @return
@@ -77,6 +77,7 @@ public class T1 {
 
     /**
      * 字符串排列
+     *
      * @param s
      * @param t
      * @return
@@ -130,11 +131,12 @@ public class T1 {
 
     /**
      * 跟寻找字符串的排列一样，只是找到一个合法异位词（排列）之后将起始索引加入 res 即可。
+     *
      * @param s
      * @param t
      * @return
      */
-    public static List<Integer> checkInclusion2(String s, String t) {
+    public static List<Integer> findAnagrams(String s, String t) {
         HashMap<Character, Integer> need = new HashMap<>();
         HashMap<Character, Integer> window = new HashMap<>();
         ArrayList<Integer> res = new ArrayList<>();
@@ -144,8 +146,6 @@ public class T1 {
         }
         int left = 0, right = 0;
         int valid = 0;
-        // 记录最小覆盖子串的起始索引及⻓度
-        int start = 0, len = Integer.MAX_VALUE;
         while (right < s.length()) {
             // c 是将移入窗口的字符
             char c = s.charAt(right); // 右移窗口
@@ -159,9 +159,9 @@ public class T1 {
                 }
             }
             // 判断左侧窗口是否要收缩
-            while (right-left>=t_len) {
+            while (right - left >= t_len) {
                 // 在这里更新最小覆盖子串
-                if (valid==need.size()&&!s.substring(left,right).equals(t)) {
+                if (valid == need.size() && !s.substring(left, right).equals(t)) {
                     res.add(left);
                 }
                 // d 是将移出窗口的字符
@@ -181,5 +181,33 @@ public class T1 {
         // 返回最小覆盖子串
         return res;
     }
+
+    public static int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> window = new HashMap<>();
+        int res = 0;
+        int left = 0, right = 0;
+        while (right < s.length()) {
+            // c 是将移入窗口的字符
+            char c = s.charAt(right); // 右移窗口
+            int count = window.getOrDefault(c, 0);
+            // 进行窗口内数据的一系列更新
+            window.put(c, ++count);
+            right++;
+            // 判断左侧窗口是否要收缩
+            while (window.getOrDefault(c, 0) > 1) {
+                count = window.get(s.charAt(left));
+                // 将字符移除
+                window.put(s.charAt(left), --count);
+                // 左移窗口
+                left++;
+            }
+            if (res < right - left) {
+                res = right - left;
+            }
+        }
+        // 返回最小覆盖子串
+        return res;
+    }
+
 
 }
