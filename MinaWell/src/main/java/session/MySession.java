@@ -73,9 +73,9 @@ public class MySession implements Serializable {
     }
 
     public void write(Object msg) {
-        if (sessionIsNull()) {
-            new CustomPack()
-        }
+//        if (sessionIsNull()) {
+//            new CustomPack()
+//        }
     }
 
     public boolean sessionIsNull() {

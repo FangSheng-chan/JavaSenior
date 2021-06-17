@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/m1" />
+    <file type="web" url="file://$PROJECT_DIR$/myWeb" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -17,6 +18,7 @@
         <option value="$PROJECT_DIR$/spring-boot-tool/pom.xml" />
         <option value="$PROJECT_DIR$/spring-learn/pom.xml" />
         <option value="$PROJECT_DIR$/nettyWell/pom.xml" />
+        <option value="$PROJECT_DIR$/myWeb/pom.xml" />
       </list>
     </option>
   </component>

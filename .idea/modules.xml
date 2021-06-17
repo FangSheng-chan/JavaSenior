@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/javaInterview/javaInterview.iml" filepath="$PROJECT_DIR$/javaInterview/javaInterview.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaInterview2/javaInterview2.iml" filepath="$PROJECT_DIR$/javaInterview2/javaInterview2.iml" />
       <module fileurl="file://$PROJECT_DIR$/m1/m1.iml" filepath="$PROJECT_DIR$/m1/m1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myWeb/myWeb.iml" filepath="$PROJECT_DIR$/myWeb/myWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/nettyWell/nettyWell.iml" filepath="$PROJECT_DIR$/nettyWell/nettyWell.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-jedis/redis-jedis.iml" filepath="$PROJECT_DIR$/redis-jedis/redis-jedis.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" filepath="$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" />

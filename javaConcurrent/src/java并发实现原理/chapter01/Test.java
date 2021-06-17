@@ -31,11 +31,12 @@ public class Test {
 //            threads[i] = new Thread(accountOperator, "Thread" + i);
 //            threads[i].start();
 //        }
-        T13 thread1 = new T13();
-        T13 thread2 = new T13();
-        Thread t1 = new Thread(thread1, "t1");
-        Thread t2 = new Thread(thread1, "t2");
-        t1.start();
-        t2.start();
+        T13 t13 = new T13();
+        new Thread(() -> {
+            T13.method();
+        }).start();
+        new Thread(() -> {
+            T13.method2();
+        }).start();
     }
 }

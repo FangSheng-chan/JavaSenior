@@ -15,7 +15,7 @@ public class T1 {
     public static void main(String[] args) {
         HashMap<Object, Object> map = new HashMap<>();
         map.getOrDefault("1", 0);
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(checkInclusion("abc", "aaabbbccc"));
     }
 
     /**
@@ -59,7 +59,7 @@ public class T1 {
                 }
                 // d 是将移出窗口的字符
                 char d = s.charAt(left);
-                // 左移窗口
+                // 左移口
                 left++;
                 // 进行窗口内数据的一系列更新
                 if (need.containsKey(d)) {
