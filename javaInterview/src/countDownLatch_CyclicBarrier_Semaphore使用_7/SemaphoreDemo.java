@@ -14,7 +14,7 @@ public class SemaphoreDemo {
     public static void main(String[] args) {
         Semaphore semaphore = new Semaphore(3, false);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 12; i++) {
             new Thread(() -> {
                 try {
                     semaphore.acquire();

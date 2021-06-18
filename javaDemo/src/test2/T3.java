@@ -18,7 +18,7 @@ public class T3 {
         }
         for (int i = 0; i < 10; i++) {
             new Thread(() ->{
-                System.out.println(Thread.currentThread().getName());
+//                System.out.println(Thread.currentThread().getName());
                 System.out.println(point.distance());
             },String.valueOf(i)).start();
         }

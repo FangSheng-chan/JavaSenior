@@ -16,6 +16,9 @@ public class HelloServlet implements Servlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         System.out.println("2 init方法");
+        System.out.println("helloServlet程序的别名\t"+config.getServletName());
+        System.out.println("初始化参数username的值\t"+config.getInitParameter("username"));
+        System.out.println(config.getServletContext());
     }
 
     @Override

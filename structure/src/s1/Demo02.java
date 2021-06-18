@@ -217,6 +217,7 @@ public class Demo02 {
 
     /**
      * K 个一组反转链表
+     *
      * @param head
      * @param k
      * @return
@@ -276,8 +277,8 @@ public class Demo02 {
         link.insertTailNode(5);
         link.insertTailNode(6);
         System.out.println(link);
-        ListNode listNode = link.reverseKGroup(link.head, 3);
-        System.out.println(listNode);
+        ListNode reverse = link.reverse(link.head);
+        System.out.println(reverse);
 //        ListNode reverse = link.reverseBetween(link.head, 1, 5);
 //        System.out.println(reverse);
 //        ListNode reverseN = link.reverseN(link.head, 3);

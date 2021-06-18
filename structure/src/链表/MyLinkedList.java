@@ -7,9 +7,10 @@ import java.util.List;
  * @date 2021/6/15 10:26 上午
  */
 public class MyLinkedList {
+
     ListNode head = null;
 
-    private void addNode(int d) {
+    public void addNode(int d) {
         ListNode newNode = new ListNode(d);
         if (head == null) {
             head = newNode;
@@ -30,5 +31,25 @@ public class MyLinkedList {
         head.next.next = head;
         head.next = null;
         return last;
+    }
+
+    ListNode successor = null;
+
+    ListNode reverseN(ListNode head, int n) {
+        if (n == 1) {
+            successor = head.next;
+            return head;
+        }
+        ListNode last = reverseN(head.next, n - 1);
+        head.next.next = head;
+        head.next = successor;
+        return last;
+    }
+
+    @Override
+    public String toString() {
+        return "MyLinkedList{" +
+                "head=" + head +
+                '}';
     }
 }

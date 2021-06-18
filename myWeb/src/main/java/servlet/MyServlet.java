@@ -1,5 +1,6 @@
 package servlet;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,11 @@ public class MyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        ServletConfig servletConfig = getServletConfig();
+        System.out.println(servletConfig);
+        System.out.println(servletConfig.getInitParameter("username"));
+        System.out.println(servletConfig.getServletName());
+        System.out.println(servletConfig.getServletContext());
     }
 
     @Override
@@ -38,5 +43,6 @@ public class MyServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+        System.out.println("重写了init方法");
     }
 }
