@@ -14,7 +14,7 @@ public class T1 {
         linkedList.addNode(5);
         linkedList.addNode(6);
 //        ListNode reverse = linkedList.reverse(linkedList.head);
-        ListNode reverseN = linkedList.reverseN(linkedList.head, 3);
+        ListNode reverseN = linkedList.reverseBetween2(linkedList.head, 2, 4);
 //        System.out.println(reverse);
         System.out.println(reverseN);
     }
