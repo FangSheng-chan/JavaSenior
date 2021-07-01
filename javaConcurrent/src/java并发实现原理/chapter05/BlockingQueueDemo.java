@@ -1,8 +1,7 @@
 package java并发实现原理.chapter05;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.sql.Time;
+import java.util.concurrent.*;
 
 /**
  * @author fangsheng
@@ -10,7 +9,66 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class BlockingQueueDemo {
     public static void main(String[] args) {
-        BlockingQueue<Object> blockingQueue = new ArrayBlockingQueue<Object>(10);
+
+    }
+
+    private static void TestSynchronousQueue() {
+        /**
+         * 一存一取的状态¬
+         */
+        SynchronousQueue<Object> synchronousQueue = new SynchronousQueue<>();
+        new Thread(() -> {
+            try {
+                System.out.println(Thread.currentThread().getName() + "\t put A ");
+                synchronousQueue.put("A");
+                System.out.println(Thread.currentThread().getName() + "\t put B ");
+                synchronousQueue.put("B");
+                System.out.println(Thread.currentThread().getName() + "\t put C ");
+                synchronousQueue.put("C");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        new Thread(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(5);
+                synchronousQueue.take();
+                System.out.println(Thread.currentThread().getName() + "\t take A ");
+
+                TimeUnit.SECONDS.sleep(5);
+                synchronousQueue.take();
+                System.out.println(Thread.currentThread().getName() + "\t take B ");
+
+                TimeUnit.SECONDS.sleep(5);
+                synchronousQueue.take();
+                System.out.println(Thread.currentThread().getName() + "\t take C ");
+
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private static void TestLinkedBlockingQueue() {
         LinkedBlockingQueue<Object> linkedBlockingQueue = new LinkedBlockingQueue<>();
+        try {
+            linkedBlockingQueue.offer(1, 2L, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void TestArrayBlockingQueue() {
+        BlockingQueue<Object> blockingQueue = new ArrayBlockingQueue<Object>(3);
+        try {
+            blockingQueue.offer(1, 2, TimeUnit.SECONDS);
+            blockingQueue.offer(1, 2, TimeUnit.SECONDS);
+            blockingQueue.offer(1, 2, TimeUnit.SECONDS);
+            System.out.println(blockingQueue.offer(1, 10, TimeUnit.SECONDS));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

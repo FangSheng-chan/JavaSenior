@@ -12,14 +12,19 @@ public class T1 {
         linkedList.addNode(3);
         linkedList.addNode(4);
         linkedList.addNode(5);
-        linkedList.addNode(6);
-        ListNode reverse = linkedList.reverseList(linkedList.head);
+//        linkedList.addNode(1);
+        System.out.println(linkedList.reverseList3(linkedList.head));
+//        linkedList.printList(linkedList.head);
+//        boolean palindrome = linkedList.isPalindrome(linkedList.head);
+//        System.out.println(palindrome);
+//        ListNode reverse = linkedList.reverse2(linkedList.head);
 //        ListNode reverseBetween2 = linkedList.reverseBetween2(linkedList.head, 1, 4);
 //        ListNode reverseN2 = linkedList.reverseN2(linkedList.head, 2);
 //        ListNode reverseKGroup = linkedList.reverseKGroup(linkedList.head, 2);
-        System.out.println(reverse);
+//        System.out.println(reverse);
 //        System.out.println(reverseBetween2);
 //        System.out.println(reverseN2);
 //        System.out.println(reverseKGroup);
+
     }
 }

@@ -9,8 +9,8 @@ import java.util.Arrays;
 public class QuickSort {
     public static void main(String[] args) {
         int[] c = {35, 6, 57, 2, 98, 55, 34};
-//        quickSort(c, 0, c.length - 1);
-        sort(c);
+        quickSort(c, 0, c.length - 1);
+//        sort(c);
         System.out.println(Arrays.toString(c));
     }
 

@@ -19,6 +19,7 @@ public class SingletonDemo {
             synchronized (SingletonDemo.class) {
                 //c不加 volitale 关键字的话有可能会出现尚未完全初始化就获取到的情况。原因是内存模型允许无序写入
                 if (instance == null) {
+                   //（1）分配一块内存。（2）在内存上初始化成员变量。（3）把instance引用指向内存。
                     instance = new SingletonDemo();
                 }
             }

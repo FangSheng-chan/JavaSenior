@@ -5,6 +5,17 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>context</param-value>
+    </context-param>
+
+
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
     <servlet>
         <!--一般是类名-->
         <servlet-name>HelloServlet</servlet-name>
@@ -39,4 +50,12 @@
         <url-pattern>/hello2</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ContextServlet</servlet-name>
+        <servlet-class>servlet.ContextServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContextServlet</servlet-name>
+        <url-pattern>/ContextServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

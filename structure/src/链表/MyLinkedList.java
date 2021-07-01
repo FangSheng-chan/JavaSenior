@@ -1,6 +1,5 @@
 package 链表;
 
-import java.util.List;
 
 /**
  * @author fangsheng
@@ -57,6 +56,12 @@ public class MyLinkedList {
         return head;
     }
 
+    /**
+     * 双指针
+     *
+     * @param head
+     * @return
+     */
     ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode curr = head;
@@ -67,6 +72,50 @@ public class MyLinkedList {
             curr = next;
         }
         return prev;
+    }
+
+    /**
+     * 头插法
+     *
+     * @param head
+     * @return
+     */
+    ListNode reverseList2(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = head;
+        while (cur.next != null) {
+            ListNode removed = cur.next;
+            cur.next = dummy.next;
+            dummy.next = cur;
+            cur = removed;
+        }
+        return dummy.next;
+    }
+
+    ListNode reverseList3(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newList = reverseList3(head.next);
+        System.out.println(head);
+        head.next.next = head;
+        head.next = null;
+        return newList;
+    }
+
+
+    ListNode reverse2(ListNode head) {
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode g = dummyHead;
+        ListNode p = dummyHead.next;
+        while (p.next != null) {
+            ListNode removed = p.next;
+            p.next = p.next.next;
+            removed.next = g.next;
+            g.next = removed;
+        }
+        return dummyHead.next;
     }
 
 
@@ -90,7 +139,6 @@ public class MyLinkedList {
      * @param n
      * @return
      */
-
     ListNode reverseBetween2(ListNode head, int m, int n) {
         ListNode dummyHead = new ListNode(0);
         dummyHead.next = head;
@@ -132,7 +180,7 @@ public class MyLinkedList {
             //记录下要翻转链表的头节点
             ListNode start = pre.next;
             //翻转链表,pre.next指向翻转后的链表。1->2 变成2->1。 dummy->2->1
-            pre.next = reverseList(start);
+            pre.next = reverse2(start);
             //翻转后头节点变到最后。通过.next把断开的链表重新链接。
             start.next = next;
             //将pre换成下次要翻转的链表的头结点的上一个节点。即start
@@ -143,10 +191,60 @@ public class MyLinkedList {
         return dummy.next;
     }
 
+//    public boolean isPalindrome(ListNode head) {
+//
+//    }
+
+    public static boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public void printList(ListNode head) {
+        if (head == null) {
+            return;
+        }
+        System.out.println(head.val);
+        printList(head.next);
+    }
+
+    // 左侧指针
+    ListNode left;
+
+    boolean isPalindrome(ListNode head) {
+        left = head;
+        return traverse(head);
+    }
+
+    boolean traverse(ListNode right) {
+        if (right == null) {
+            return true;
+        }
+        boolean res = traverse(right.next);
+        // 后序遍历代码
+        res = res && (right.val == left.val);
+        left = left.next;
+        return res;
+    }
+
+
     @Override
     public String toString() {
         return "MyLinkedList{" +
                 "head=" + head +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPalindrome("12321"));
+
     }
 }
