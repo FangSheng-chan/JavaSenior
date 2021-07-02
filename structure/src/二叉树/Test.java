@@ -9,8 +9,9 @@ public class Test {
         BinaryTree binaryTree = new BinaryTree();
         TreeNode root = new TreeNode(1);
         insertNode(binaryTree, root);
-        String serialize = binaryTree.serialize(root);
-        System.out.println(serialize);
+        binaryTree.traverse(root);
+//        String serialize = binaryTree.serialize(root);
+//        System.out.println(serialize);
 //        binaryTree.flatten2(root);
 //        System.out.println(root);
 //        System.out.println(root.left.left);
@@ -32,14 +33,14 @@ public class Test {
         binaryTree.setRoot(root);
         root.setLeft(node1);
         root.setRight(node2);
-//        node1.setLeft(node3);
-//        node1.setRight(node4);
-//        node2.setLeft(node5);
+        node1.setLeft(node3);
+        node1.setRight(node4);
+        node2.setLeft(node5);
         node2.setRight(node6);
-//        node3.setLeft(node7);
-//        node3.setRight(node8);
-//        node4.setLeft(node9);
-//        node4.setRight(node10);
+        node3.setLeft(node7);
+        node3.setRight(node8);
+        node4.setLeft(node9);
+        node4.setRight(node10);
     }
 
     /**

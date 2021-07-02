@@ -363,6 +363,27 @@ public class BinaryTree {
         return root;
     }
 
+    void traverse(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        //初始化队列，将root 加入队列
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            //层级遍历代码位置
+            System.out.println(cur.val);
+            if (cur.left != null) {
+                queue.offer(cur.left);
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
+            }
+        }
+    }
+
 //    TreeNode buildTree(int[] preorder, int[] inorder) {
 //
 //    }

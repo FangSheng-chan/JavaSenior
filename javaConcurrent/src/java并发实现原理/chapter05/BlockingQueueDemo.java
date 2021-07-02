@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  */
 public class BlockingQueueDemo {
     public static void main(String[] args) {
-
+        TestArrayBlockingQueue();
     }
 
     private static void TestSynchronousQueue() {
@@ -32,19 +32,17 @@ public class BlockingQueueDemo {
 
         new Thread(() -> {
             try {
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(2);
                 synchronousQueue.take();
                 System.out.println(Thread.currentThread().getName() + "\t take A ");
 
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(2);
                 synchronousQueue.take();
                 System.out.println(Thread.currentThread().getName() + "\t take B ");
 
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(2);
                 synchronousQueue.take();
                 System.out.println(Thread.currentThread().getName() + "\t take C ");
-
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -61,12 +59,12 @@ public class BlockingQueueDemo {
     }
 
     private static void TestArrayBlockingQueue() {
-        BlockingQueue<Object> blockingQueue = new ArrayBlockingQueue<Object>(3);
+        BlockingQueue<Object> blockingQueue = new ArrayBlockingQueue<>(3);
         try {
-            blockingQueue.offer(1, 2, TimeUnit.SECONDS);
-            blockingQueue.offer(1, 2, TimeUnit.SECONDS);
-            blockingQueue.offer(1, 2, TimeUnit.SECONDS);
-            System.out.println(blockingQueue.offer(1, 10, TimeUnit.SECONDS));
+            blockingQueue.offer(1, 1, TimeUnit.SECONDS);
+            blockingQueue.offer(1, 1, TimeUnit.SECONDS);
+            System.out.println(blockingQueue.offer(1, 1, TimeUnit.SECONDS));
+            System.out.println(blockingQueue.offer(1, 1, TimeUnit.SECONDS));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
