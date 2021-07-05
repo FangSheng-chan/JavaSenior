@@ -15,7 +15,10 @@ class MyThread2 implements Runnable {
         System.out.println("123");
     }
 }
-
+/**
+ * @author fangsheng
+ * @date 2021/7/1 4:37 下午
+ */
 public class ScheduleThreadPoolExecutorDemo {
     public static void main(String[] args) {
         MyThread2 myThread2 = new MyThread2();

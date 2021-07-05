@@ -9,7 +9,11 @@ public class Test {
         BinaryTree binaryTree = new BinaryTree();
         TreeNode root = new TreeNode(1);
         insertNode(binaryTree, root);
-        binaryTree.traverse(root);
+        String traverse = binaryTree.serialize2(root);
+        System.out.println(traverse);
+        String serialize = binaryTree.serialize(root);
+        System.out.println(serialize);
+//        binaryTree.dfsTree(root);
 //        String serialize = binaryTree.serialize(root);
 //        System.out.println(serialize);
 //        binaryTree.flatten2(root);

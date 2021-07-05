@@ -135,7 +135,10 @@ public class BinaryTree {
         if (root == null) {
             return 0;
         }
-        return 1 + count(root.left) + count(root.right);
+        int left = count(root.left);
+        int right = count(root.right);
+        int res = left + right + 1;
+        return res;
     }
 
     /**
@@ -301,6 +304,12 @@ public class BinaryTree {
         p.right = right;
     }
 
+    /**
+     * 构造最大二叉树
+     *
+     * @param nums
+     * @return
+     */
     static TreeNode constructMaximumBinaryTree(int[] nums) {
         return build(nums, 0, nums.length - 1);
     }
@@ -322,14 +331,34 @@ public class BinaryTree {
         return root;
     }
 
+    String serialize2(TreeNode root) {
+        // 对于空节点，可以用一个特殊字符表示
+        if (root == null) {
+            return "#";
+        }
+        // 将左右子树序列化成字符串
+        String left = serialize2(root.left);
+        String right = serialize2(root.right);
+        /* 后序遍历代码位置 */
+        // 左右子树加上自己，就是以自己为根的二叉树序列化结果
+        String subTree = left + "," + right + "," + root.val;
+        return subTree;
+    }
+
     String SEP = ",";
     String NULL = "#";
 
+    /**
+     * 前序遍历序列化
+     *
+     * @param root
+     */
     public String serialize(TreeNode root) {
         StringBuilder stringBuilder = new StringBuilder();
         serialize(root, stringBuilder);
         return stringBuilder.toString();
     }
+
 
     void serialize(TreeNode root, StringBuilder stringBuilder) {
         if (root == null) {
@@ -341,6 +370,12 @@ public class BinaryTree {
         serialize(root.right, stringBuilder);
     }
 
+    /**
+     * 前序遍历反序列化
+     *
+     * @param data
+     * @return
+     */
     TreeNode deserialize(String data) {
         LinkedList<String> nodes = new LinkedList<>();
         for (String s : data.split(",")) {
@@ -363,7 +398,35 @@ public class BinaryTree {
         return root;
     }
 
-    void traverse(TreeNode root) {
+    /**
+     * 深度优先遍历二叉树
+     *
+     * @param root
+     */
+    void dfsTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode s = stack.pop();
+            System.out.println(s.val);
+            if (s.right != null) {
+                stack.push(s.right);
+            }
+            if (s.left != null) {
+                stack.push(s.left);
+            }
+        }
+    }
+
+    /**
+     * 广度优先遍历二叉树
+     *
+     * @param root
+     */
+    void bfsTree(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -384,9 +447,121 @@ public class BinaryTree {
         }
     }
 
-//    TreeNode buildTree(int[] preorder, int[] inorder) {
-//
-//    }
+    /**
+     * 通过前序和中序得到二叉树
+     *
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    TreeNode buildTree(int[] preorder, int[] inorder) {
+        return build(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+    }
+
+    TreeNode build(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
+        if (preStart > preEnd) {
+            return null;
+        }
+        // root 节点对应的值就是前序遍历数组的第一个元素
+        int rootVal = preorder[preStart];
+        // rootVal 在中序遍历数组中的索引
+        int index = 0;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inorder[i] == rootVal) {
+                index = i;
+                break;
+            }
+        }
+        int leftSize = index - inStart;
+        TreeNode root = new TreeNode(rootVal);
+        root.left = build(preorder, preStart + 1, preStart + leftSize,
+                inorder, inStart, index - 1);
+        root.right = build(preorder, preStart + leftSize + 1, preEnd,
+                inorder, index + 1, inEnd);
+        return root;
+    }
+
+    /**
+     * 通过中序遍历和后序遍历构造二叉树
+     *
+     * @param inorder
+     * @param postorder
+     * @return
+     */
+    TreeNode buildTree2(int[] inorder, int[] postorder) {
+        return build2(inorder, 0, inorder.length - 1,
+                postorder, 0, postorder.length - 1);
+    }
+
+    TreeNode build2(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart, int postEnd) {
+        if (inStart > inEnd) {
+            return null;
+        }
+        // root 节点对应的值就是后序遍历数组的最后一个元素
+        int rootVal = postorder[postEnd];
+        // rootVal 在中序遍历数组中的索引
+        int index = 0;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inorder[i] == rootVal) {
+                index = i;
+                break;
+            }
+        }
+        // 左子树的节点个数
+        int leftSize = index - inStart;
+        TreeNode root = new TreeNode(rootVal);
+        // 递归构造左右子树
+        root.left = build(inorder, inStart, index - 1,
+                postorder, postStart, postStart + leftSize - 1);
+
+        root.right = build(inorder, index + 1, inEnd,
+                postorder, postStart + leftSize, postEnd - 1);
+        return root;
+    }
+
+
+
+    // 记录所有子树以及出现的次数
+    HashMap<String, Integer> memo = new HashMap<>();
+    // 记录重复的子树根节点
+    LinkedList<TreeNode> res = new LinkedList<>();
+
+    /**
+     * 如何判断我们应该用前序还是中序还是后序遍历的框架？
+     * 思考一个二叉树节点需要做什么，到底用什么遍历顺序就清楚了。
+     *
+     * @param root
+     * @return
+     */
+    List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+        traverse(root);
+        return res;
+    }
+
+    String traverse(TreeNode root) {
+        if (root == null) {
+            return "#";
+        }
+        String left = traverse(root.left);
+        String right = traverse(root.right);
+        String subTree = left + "," + right + "," + root.val;
+        int freq = memo.getOrDefault(subTree, 0);
+        // 多次重复也只会被加入结果集一次
+        if (freq == 1) {
+            res.add(root);
+        }
+        // 给子树对应的出现次数加一
+        memo.put(subTree, freq + 1);
+        return subTree;
+    }
+
+    @Test
+    public void t2() {
+        int[] preorder = {1, 2, 5, 4, 6, 7, 3, 8, 9};
+        int[] inorder = {5, 2, 6, 4, 7, 1, 8, 3, 9};
+        TreeNode treeNode = buildTree(preorder, inorder);
+        System.out.println(treeNode);
+    }
 
     @Test
     public void t1() {
