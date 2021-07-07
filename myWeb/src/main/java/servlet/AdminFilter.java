@@ -19,6 +19,13 @@ public class AdminFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpSession session = httpServletRequest.getSession();
+        Object user = session.getAttribute("user");
+        System.out.println(user);
+        if (user == null) {
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        } else {
+            chain.doFilter(request,response);
+        }
     }
 
     @Override

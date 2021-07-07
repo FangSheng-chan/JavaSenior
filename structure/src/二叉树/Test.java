@@ -1,5 +1,7 @@
 package 二叉树;
 
+import java.util.List;
+
 /**
  * @author fangsheng
  * @date 2021/6/23 9:39 上午
@@ -9,10 +11,12 @@ public class Test {
         BinaryTree binaryTree = new BinaryTree();
         TreeNode root = new TreeNode(1);
         insertNode(binaryTree, root);
+//        List<TreeNode> traverse = binaryTree.findDuplicateSubtrees(root);
+//        System.out.println(traverse);
         String traverse = binaryTree.serialize2(root);
         System.out.println(traverse);
-        String serialize = binaryTree.serialize(root);
-        System.out.println(serialize);
+//        String serialize = binaryTree.serialize(root);
+//        System.out.println(serialize);
 //        binaryTree.dfsTree(root);
 //        String serialize = binaryTree.serialize(root);
 //        System.out.println(serialize);
@@ -21,6 +25,22 @@ public class Test {
 //        System.out.println(root.left.left);
 //        binaryTree.flatten(root);
 //        System.out.println(binaryTree);
+    }
+
+    private static void insertNode2(BinaryTree binaryTree, TreeNode root) {
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(3);
+        TreeNode node3 = new TreeNode(4);
+        TreeNode node4 = new TreeNode(2);
+        TreeNode node5 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(4);
+        binaryTree.setRoot(root);
+        root.setLeft(node1);
+        root.setRight(node2);
+        node1.setLeft(node3);
+        node2.setLeft(node4);
+        node2.setRight(node5);
+        node4.setLeft(node6);
     }
 
     private static void insertNode(BinaryTree binaryTree, TreeNode root) {

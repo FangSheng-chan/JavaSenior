@@ -58,4 +58,22 @@
         <servlet-name>ContextServlet</servlet-name>
         <url-pattern>/ContextServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>servlet.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 </web-app>

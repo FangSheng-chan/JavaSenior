@@ -118,11 +118,16 @@ public class BinaryTree {
      * @param root
      */
     void traver(TreeNode root) {
-        //前序遍历
-        traver(root.left);
-        //中序遍历
-        traver(root.right);
-        //后序遍历
+        if (root != null) {
+            //前序遍历
+            traver(root.left);
+            //中序遍历
+            traver(root.right);
+            //后序遍历
+            System.out.println(root.val);
+        } else {
+            System.out.println("#");
+        }
     }
 
     /**
@@ -331,6 +336,16 @@ public class BinaryTree {
         return root;
     }
 
+    String serial(TreeNode root) {
+        if (root == null) {
+            return "#";
+        }
+        String left = serial(root.left);
+        String right = serial(root.right);
+        String subTree = left + right + root.val;
+        return subTree;
+    }
+
     String serialize2(TreeNode root) {
         // 对于空节点，可以用一个特殊字符表示
         if (root == null) {
@@ -342,6 +357,7 @@ public class BinaryTree {
         /* 后序遍历代码位置 */
         // 左右子树加上自己，就是以自己为根的二叉树序列化结果
         String subTree = left + "," + right + "," + root.val;
+//        System.out.println(subTree);
         return subTree;
     }
 
@@ -518,7 +534,6 @@ public class BinaryTree {
                 postorder, postStart + leftSize, postEnd - 1);
         return root;
     }
-
 
 
     // 记录所有子树以及出现的次数
