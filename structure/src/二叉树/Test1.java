@@ -1,20 +1,26 @@
 package 二叉树;
 
+import org.junit.Test;
+
 import java.util.List;
 
 /**
  * @author fangsheng
  * @date 2021/6/23 9:39 上午
  */
-public class Test {
+public class Test1 {
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
         TreeNode root = new TreeNode(1);
         insertNode(binaryTree, root);
+//        System.out.println(binaryTree.generateTree(3));
+        T2 t2 = new T2();
+        String s = t2.serialize3(root);
+        System.out.println(s);
 //        List<TreeNode> traverse = binaryTree.findDuplicateSubtrees(root);
 //        System.out.println(traverse);
-        String traverse = binaryTree.serialize2(root);
-        System.out.println(traverse);
+//        String traverse = binaryTree.serialize2(root);
+//        System.out.println(traverse);
 //        String serialize = binaryTree.serialize(root);
 //        System.out.println(serialize);
 //        binaryTree.dfsTree(root);
@@ -25,6 +31,31 @@ public class Test {
 //        System.out.println(root.left.left);
 //        binaryTree.flatten(root);
 //        System.out.println(binaryTree);
+    }
+
+    @Test
+    public void t1(){
+        BinaryTree binaryTree = new BinaryTree();
+        TreeNode root = new TreeNode(10);
+        TreeNode node1 = new TreeNode(7);
+        TreeNode node2 = new TreeNode(16);
+        TreeNode node3 = new TreeNode(6);
+        TreeNode node4 = new TreeNode(9);
+        TreeNode node5 = new TreeNode(14);
+        TreeNode node6 = new TreeNode(17);
+        TreeNode node7 = new TreeNode(8);
+        binaryTree.setRoot(root);
+        root.setLeft(node1);
+        root.setRight(node2);
+        node1.setLeft(node3);
+        node1.setRight(node4);
+        node2.setLeft(node5);
+        node2.setRight(node6);
+        node4.setLeft(node7);
+        TreeNode treeNode = binaryTree.convertBST(root);
+        System.out.println(treeNode);
+//        int kthSmallest = binaryTree.kthSmallest(root, 2);
+//        System.out.println(kthSmallest);
     }
 
     private static void insertNode2(BinaryTree binaryTree, TreeNode root) {

@@ -5,6 +5,7 @@ package java并发实现原理.chapter01.锁;
  * @date 2021/6/23 12:26 下午
  */
 public class ObjectService {
+
     public void serviceMethodA() {
         try {
             synchronized (this) {

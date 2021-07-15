@@ -8,10 +8,10 @@ public class Test {
     public static void main(String[] args) throws InterruptedException {
         ObjectService objectService = new ObjectService();
         new Thread(() -> {
-            objectService.serviceMethodI();
+            objectService.serviceMethodA();
         },"B").start();
         new Thread(() -> {
-            ObjectService.serviceMethodH();
+            objectService.serviceMethodB();
         },"A").start();
     }
 }

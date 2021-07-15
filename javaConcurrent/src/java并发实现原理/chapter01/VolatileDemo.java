@@ -37,7 +37,7 @@ public class VolatileDemo {
             new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
                     myData.addPlus();
-                    myData.addAtomic();
+//                    myData.addAtomic();
                 }
             }, String.valueOf(i)).start();
         }
@@ -46,7 +46,7 @@ public class VolatileDemo {
         while (Thread.activeCount() > 2) {
             Thread.yield();
         }
-        System.out.println(Thread.currentThread().getName() + myData.atomicInteger);
+//        System.out.println(Thread.currentThread().getName() + myData.atomicInteger);
         System.out.println(Thread.currentThread().getName() + myData.number);
     }
 }
